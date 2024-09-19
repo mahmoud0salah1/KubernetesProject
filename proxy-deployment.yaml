@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proxy
+  namespace: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: proxy
+  template:
+    metadata:
+      labels:
+        app: proxy
+    spec:
+      containers:
+      - name: nginx
+        image: mahmoud0salah/custom-nginx:latest  # Use the custom Nginx image
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proxy-service
+  namespace: webapp
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 31000  # Use a new NodePort
+  selector:
+    app: proxy

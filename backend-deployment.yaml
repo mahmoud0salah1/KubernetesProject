@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: mahmoud0salah/backend:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_HOST
+          value: "database-service"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USER
+          value: "dbuser"
+        - name: DB_PASSWORD
+          value: "dbpassword"
+        - name: DB_NAME
+          value: "mydatabase"
+      volumes:
+      - name: db-credentials
+        hostPath: 
+          path: /mnt/d/Devops2/project/db-creds.txt
+          type: File
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: webapp
+spec:
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: backend
