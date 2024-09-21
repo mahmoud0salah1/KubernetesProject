@@ -11,6 +11,7 @@ kubectl create namespace webapp
 kubectl apply -f backend-deployment.yaml
 kubectl apply -f database-deployment.yaml
 kubectl apply -f proxy-deployment.yaml
+kubectl apply -f nginx-config.yaml
 
 
 
