@@ -22,16 +22,12 @@ kubectl get pods -n webapp
 kubectl get pods -n webapp
 kubectl get pods -n webapp
 kubectl get pods -n webapp
-kubectl get pods -n webapp
-kubectl get pods -n webapp
-kubectl get pods -n webapp
-kubectl get pods -n webapp
-kubectl get pods -n webapp
-kubectl get pods -n webapp
+kubectl get pods -n cicd
+
 
 # Check Kubernetes services in the 'webapp' namespace
 echo "Checking Kubernetes services in namespace 'webapp'..."
 kubectl get services -n webapp
-
+kubectl get services -n cicd
 # End of script
 echo "Deployment steps completed."
