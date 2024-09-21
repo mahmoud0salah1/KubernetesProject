@@ -15,7 +15,6 @@ kubectl apply -f nginx-config.yaml
 
 
 
-
 echo "Checking Kubernetes pods in namespace 'webapp'..."
 kubectl get pods -n webapp
 kubectl get pods -n webapp
@@ -23,11 +22,15 @@ kubectl get pods -n webapp
 kubectl get pods -n webapp
 kubectl get pods -n webapp
 kubectl get pods -n cicd
-
+curl http://192.168.49.2:31000
 
 # Check Kubernetes services in the 'webapp' namespace
 echo "Checking Kubernetes services in namespace 'webapp'..."
 kubectl get services -n webapp
 kubectl get services -n cicd
+kubectl get pods -n webapp
+kubectl get pods -n webapp
+kubectl get pods -n webapp
+kubectl get pods -n webapp
 # End of script
 echo "Deployment steps completed."
